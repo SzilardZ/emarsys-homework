@@ -10,11 +10,11 @@ public class DueDateCalculator {
 
     public static void main(String[] args) {
 
-        Calendar calendar = setDate(2019, 4, 25, 10, 20);
+        Calendar bugReportDate = setDate(2019, 4, 25, 10, 20);
 
         int turnaroundTime = 5;
 
-        consoleLog(calendar, turnaroundTime);
+        consoleLog(bugReportDate, turnaroundTime);
 
     }
 
