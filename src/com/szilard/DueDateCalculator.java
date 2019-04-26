@@ -44,12 +44,14 @@ public class DueDateCalculator {
             setTimeToFirstWorkingHour(date);
         }
 
-        if (!isWorkingHour(date)) {
+        if (!isWorkingHour(date) && date.get(HOUR_OF_DAY) < 9 ) {
             setTimeToFirstWorkingHour(date);
+        } else if (date.get(HOUR_OF_DAY) >= 17) {
+            setTimeToFirstWorkingHour(date);
+            getNextWorkingDay(date);
         }
 
         if (actualHour + remainingHours >= 17) {
-            getNextWorkingDay(date);
             remainingHours = ((actualHour + remainingHours) - 17);
             date.set(HOUR_OF_DAY, (9 + remainingHours));
         } else {
