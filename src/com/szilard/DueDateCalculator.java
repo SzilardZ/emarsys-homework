@@ -14,12 +14,7 @@ public class DueDateCalculator {
 
         int turnaroundTime = 5;
 
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("Bug report date: " + calendar.getTime().toString());
-        calculateDueDate(calendar, turnaroundTime);
-        System.out.println("----------------------------------------------------------");
-        System.out.println("THE DUE DATE:    " + calendar.getTime().toString());
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        consoleLog(calendar, turnaroundTime);
 
     }
 
@@ -44,7 +39,7 @@ public class DueDateCalculator {
             setTimeToFirstWorkingHour(date);
         }
 
-        if (!isWorkingHour(date) && date.get(HOUR_OF_DAY) < 9 ) {
+        if (!isWorkingHour(date) && date.get(HOUR_OF_DAY) < 9) {
             setTimeToFirstWorkingHour(date);
         } else if (date.get(HOUR_OF_DAY) >= 17) {
             setTimeToFirstWorkingHour(date);
@@ -97,6 +92,15 @@ public class DueDateCalculator {
     private static void setTimeToFirstWorkingHour(Calendar date) {
         date.set(HOUR_OF_DAY, 9);
         date.set(Calendar.MINUTE, 0);
+    }
+
+    private static void consoleLog(Calendar calendar, int turnaroundTime) {
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("Bug report date: " + calendar.getTime().toString());
+        calculateDueDate(calendar, turnaroundTime);
+        System.out.println("----------------------------------------------------------");
+        System.out.println("THE DUE DATE:    " + calendar.getTime().toString());
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
 }
